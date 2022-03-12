@@ -4,17 +4,23 @@ Random random = new Random(); // using to generate the random numbers
 const int present = 1,
              Abcent = 0,
              perHrWage = 20,
-             fulltime = 8;
+             fulltime = 8,
+             Parttime = 4,
+             Halfday = 2;
 
 
-
-int ispresent = random.Next(2), // 0,1
+int ispresent = random.Next(3), // 0 = Absent, 1 = Present/Fulltime, 2 = Parttime
     empWage = 0;
 
 if(ispresent == present)
 {
     Console.WriteLine(" Employee is Present ");
     empWage = perHrWage * fulltime;
+}
+else if (ispresent == Halfday)
+{
+    Console.WriteLine("Employee is Present Halfday");
+    empWage=perHrWage * Parttime;
 }
 else
 {
