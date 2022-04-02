@@ -1,42 +1,48 @@
 ﻿// See https://aka.ms/new-console-template for more information
 Console.WriteLine("Employee Wage");
-Random random = new Random(); //it is using to generate random number
-const int absent = 0,
-              present = 1,
-              halfday = 2,
-              fullMonth = 3,
-              ratePerHr = 20,
-              fullTime = 8,
-              partTime = 4,
-              perMonthDays = 20;
+const int Present = 1,
+            Halfday = 2,
+            fullMonth = 3,
+            Absent = 0,
+            Fulltime = 8,
+            Partime = 4,
+            perHrWage = 20,
+            perMonthDays = 20,
+            maxHr = 10;
 
+Random random = new Random();   //Generates Random Numbers
+int isPresent = random.Next(4);    // Present = 1, Halfday = 2, fullMonth=3, Absent = 0,
 
-int isPresent = random.Next(4), // 0= absent , 1=fullTime/present, 2=halfday/partTime , 3 = fullMonth
-    empWage = 0;
+int empWage = 0, 
+    TotalEmpWage = 0,
+    WorkingHrs = 0;
 
-switch (isPresent)
+Console.WriteLine("isPresent" + isPresent);
+while (TotalEmpWage <= maxHr && TotalEmpWage <= perMonthDays)
 {
-    case present:
-        Console.WriteLine("Employee is Present fullTime");
-        empWage = ratePerHr * fullTime;
-        break;
-    case halfday:
-        Console.WriteLine(" Employee is Present partTime ");
-        empWage = ratePerHr * partTime;
-        break;
-    case fullMonth:
-        Console.WriteLine(" Employee per Month Wage ");
-        empWage = perMonthDays * (ratePerHr * fullTime);
-        break;
+    WorkingHrs++;
+    switch (isPresent)
+    {
+        case Present:
+            Console.WriteLine("Employee is Present");
+            empWage = perHrWage * Fulltime;
+            break;
 
-    default:
-        Console.WriteLine(" Employee is Absent");
-        break;
+        case Halfday:
+            Console.WriteLine("Employee is Present");
+            empWage = perHrWage * Partime;
+            break;
 
+        default:
+            Console.WriteLine("Employee is Absent");
+            break;
 
+    }
+    TotalEmpWage += empWage;
+    Console.WriteLine("Days# : " + TotalEmpWage + "empWage : " + empWage);
 }
 
-Console.WriteLine("Employee Wage : " + empWage);
+Console.WriteLine("empWage: " + empWage);
 
 
 
